@@ -1,9 +1,8 @@
-package com.piggy.restaurants.rest;
+package com.piggy.restaurants.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,7 +19,7 @@ public class Item {
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JsonIgnore
-    private Restaurant restaurant;
+    private User user;
 
     public Item(int id, String itemName, int cost) {
         this.id = id;
@@ -58,12 +57,12 @@ public class Item {
         this.cost = cost;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public User getUser() {
+        return user;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

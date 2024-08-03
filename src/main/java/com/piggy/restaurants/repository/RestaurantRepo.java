@@ -1,7 +1,10 @@
 package com.piggy.restaurants.repository;
 
-import com.piggy.restaurants.rest.Restaurant;
+import com.piggy.restaurants.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RestaurantRepo extends JpaRepository<Restaurant, Integer> {
+import java.util.Optional;
+
+public interface RestaurantRepo extends JpaRepository<User, Integer> {
+    Optional<User> findByUsername(String username);
 }
