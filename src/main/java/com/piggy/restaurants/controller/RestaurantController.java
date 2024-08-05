@@ -38,7 +38,7 @@ public class RestaurantController {
     //creating a restaurant
     @PostMapping("/public/restaurants")
     public User createRestaurant(@Valid @RequestBody User user){
-        user.setRoles("ROLE_USER");
+        user.setRoles("ROLE_RESTAURANT");
         String plainPassword = user.getPassword();
         user.setPassword(passwordEncoder.encode(plainPassword));
         restaurantRepo.save(user);

@@ -20,6 +20,6 @@ public class JpaUserDetailsService implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return restaurantRepo.findByUsername(username)
                             .map(UserSecurity::new)
-                            .orElseThrow(()-> new UsernameNotFoundException("The username not found is:" + username));
+                            .orElseThrow(()-> new UsernameNotFoundException("The restaurant not found is:" + username));
     }
 }

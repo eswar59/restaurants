@@ -51,7 +51,7 @@ public class ItemController {
     public Item creatingItems(@Valid @RequestBody Item item, @PathVariable int id, Principal principal){
         Optional<User> rest = restaurantRepo.findById(id);
         if(rest.isEmpty()){
-            throw new UserIdNotExistsException("No user exists with id "+ id);
+            throw new UserIdNotExistsException("No restaurant exists with id "+ id);
         }
         String loggedInUsername = principal.getName();
         if(loggedInUsername.equals(rest.get().getUsername())){
@@ -61,7 +61,7 @@ public class ItemController {
         }
         else{
             //return null;
-            throw new NotAuthorizedException("You are not authorized to make changes to items of restaurant:"+ rest.get().getUsername());
+            throw new NotAuthorizedException("You are not authorized to make changes to items of restaurant with id:"+ id);
         }
     }
 }
