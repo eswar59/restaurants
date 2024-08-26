@@ -22,7 +22,8 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    //private String roles;
+    @Size(min=3)
+    private String status;
 
     @OneToMany(mappedBy = "user")
     //@JsonIgnore
@@ -35,11 +36,12 @@ public class User {
 
     }
 
-    public User(int id, String name, String password, String roles) {
+    public User(int id, String name, String password, String roles, String status) {
         this.id = id;
         this.username = name;
         this.password = password;
         this.roles=roles;
+        this.status=status;
     }
 
     public @Size(min = 3) String getPassword() {
@@ -79,5 +81,23 @@ public class User {
 
     public void setRoles(@Size(min = 4) String roles) {
         this.roles = roles;
+    }
+
+    public @Size(min = 3) String getStatus() {
+        return status;
+    }
+
+    public void setStatus(@Size(min = 3) String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", status='" + status + '\'' +
+                ", roles='" + roles + '\'' +
+                '}';
     }
 }

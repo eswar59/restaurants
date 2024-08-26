@@ -39,6 +39,7 @@ public class RestaurantController {
     @PostMapping("/public/restaurants")
     public User createRestaurant(@Valid @RequestBody User user){
         user.setRoles("ROLE_RESTAURANT");
+        user.setStatus("CLOSED");
         String plainPassword = user.getPassword();
         user.setPassword(passwordEncoder.encode(plainPassword));
         restaurantRepo.save(user);
